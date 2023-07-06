@@ -6,7 +6,7 @@ const { Category, Product } = require('../../models');
 router.get('/', (req, res) => {
   Category.findAll({
     include: [Product]})
-    .then((results) => res.json(results))
+    .then((data) => res.json(data))
 });
 
 router.get('/:id', (req, res) => {
@@ -16,12 +16,12 @@ router.get('/:id', (req, res) => {
     },
     include: [Product]
   })
-  .then((result) => res.json(result))
+  .then((data) => res.json(data))
 });
 
 router.post('/', (req, res) => {
   Category.create(req.body)
-  .then((newCategory) => res.status(200).json(newCategory))
+  .then((data) => res.status(200).json(data))
 });
 
 router.put('/:id', (req, res) => {
@@ -30,7 +30,7 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     },
   })
-  .then((binary) => res.status(200).json(binary))
+  .then((data) => res.status(200).json(data))
 });
 
 router.delete('/:id', (req, res) => {
@@ -39,7 +39,7 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     },
   })
-  .then((binary) => res.status(200).json(binary))
+  .then((data) => res.status(200).json(data))
 });
 
 module.exports = router;
