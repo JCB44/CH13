@@ -31,15 +31,26 @@ router.get('/:id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  // create a new tag
+  Tag.create(req.body)
+  .then((data) => res.status(200).json(data))
 });
 
 router.put('/:id', (req, res) => {
-  // update a tag's name by its `id` value
+  Tag.update(req.body, {
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((data) => res.status(200).json(data))
 });
 
 router.delete('/:id', (req, res) => {
-  // delete on tag by its `id` value
+  Tag.destroy({
+    where: {
+      id: req.params.id
+    }
+  })
+  .then((data) => res.status(200).json(data))
 });
 
 module.exports = router;
