@@ -22,7 +22,7 @@ you'll need to follow a few steps
 1. run mysql with the command: "mysql -u root -p" followed by your password. 
 2. running: "source schema.sql" 
 3. in a new terminal running: "npm run seed" 
-4. create a .env file with the fowwling contents:
+4. create a .env file with the following contents:
 `DB_NAME='ecommerce_db'`
 `DB_USER='root'`
 `DB_PW='(password)'`
