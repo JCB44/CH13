@@ -1,8 +1,6 @@
 const router = require('express').Router();
 const { Tag, Product, ProductTag } = require('../../models');
 
-// The `/api/tags` endpoint
-
 router.get('/', (req, res) => {
   Tag.findAll({
     include: [
@@ -12,7 +10,8 @@ router.get('/', (req, res) => {
       }
     ]
   })
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 router.get('/:id', (req, res) => {
@@ -27,12 +26,14 @@ router.get('/:id', (req, res) => {
       }
     ]
   })
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 router.post('/', (req, res) => {
   Tag.create(req.body)
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 router.put('/:id', (req, res) => {
@@ -41,7 +42,8 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 router.delete('/:id', (req, res) => {
@@ -50,7 +52,8 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     }
   })
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 module.exports = router;

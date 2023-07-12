@@ -1,18 +1,15 @@
 const router = require('express').Router();
 const { Product, Category, Tag, ProductTag } = require('../../models');
 
-// The `/api/products` endpoint
-
-// get all products
 router.get('/', (req, res) => {
   Product.findAll({ 
     include: Category, Tag, ProductTag
   })
-  .then((data) => {res.json(data)
+  .then((data) => 
+  {res.json(data)
   })
 });
 
-// get one product
 router.get('/:id', (req, res) => {
   Product.findOne ({
     where: {
@@ -26,11 +23,11 @@ router.get('/:id', (req, res) => {
       },
     ],
   })
-  .then((data) => {res.json(data)
+  .then((data) => 
+  {res.json(data)
   })
 });
 
-// create new product
 router.post('/', (req, res) => {
   Product.create(req.body)
     .then((product) => {
@@ -45,12 +42,13 @@ router.post('/', (req, res) => {
       }
       res.status(200).json(product);
     })
-    .then((data) => res.status(200).json(data))
-    .catch((err) => {res.status(400).json(err);
+    .then((data) => 
+    res.status(200).json(data))
+    .catch((err) => 
+    {res.status(400).json(err);
     });
 });
 
-// update product
 router.put('/:id', (req, res) => {
   Product.update(req.body, {
     where: {
@@ -78,8 +76,10 @@ router.put('/:id', (req, res) => {
         ProductTag.bulkCreate(newProductTags),
       ]);
     })
-    .then((data) => res.json(data))
-    .catch((err) => {res.status(400).json(err);
+    .then((data) => 
+    res.json(data))
+    .catch((err) => 
+    {res.status(400).json(err);
     });
 });
 
@@ -89,9 +89,11 @@ router.delete('/:id', (req, res) => {
       id: req.params.id,
     },
   })
-    .then((data) => {res.json(data)
+    .then((data) => 
+    {res.json(data)
     })
-    .catch((err) => {res.json(err)
+    .catch((err) => 
+    {res.json(err)
     });
 });
 

@@ -1,12 +1,11 @@
 const router = require('express').Router();
 const { Category, Product } = require('../../models');
 
-// The `/api/categories` endpoint
-
 router.get('/', (req, res) => {
   Category.findAll({
     include: [Product]})
-    .then((data) => res.json(data))
+    .then((data) =>
+    res.json(data))
 });
 
 router.get('/:id', (req, res) => {
@@ -16,12 +15,14 @@ router.get('/:id', (req, res) => {
     },
     include: [Product]
   })
-  .then((data) => res.json(data))
+  .then((data) => 
+  res.json(data))
 });
 
 router.post('/', (req, res) => {
   Category.create(req.body)
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 router.put('/:id', (req, res) => {
@@ -30,7 +31,8 @@ router.put('/:id', (req, res) => {
       id: req.params.id
     },
   })
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 router.delete('/:id', (req, res) => {
@@ -39,7 +41,8 @@ router.delete('/:id', (req, res) => {
       id: req.params.id
     },
   })
-  .then((data) => res.status(200).json(data))
+  .then((data) => 
+  res.status(200).json(data))
 });
 
 module.exports = router;
